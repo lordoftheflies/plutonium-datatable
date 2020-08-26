@@ -1,11 +1,78 @@
 {
-  "name": "plutonium-datatable",
-  "version": "0.0.0",
+  "author": {
+    "email": "laszlo.hegedus@cherubits.hu",
+    "name": "László Hegedűs",
+    "url": "https://gitlab.com/lordoftheflies"
+  },
+  "dependencies": {
+    "lit-element": "^2.2.1",
+    "lit-html": "^1.1.2"
+  },
   "description": "Webcomponent plutonium-datatable following open-wc recommendations",
-  "author": "plutonium-datatable",
+  "devDependencies": {
+    "@koa/router": "^9.1.0",
+    "@open-wc/building-rollup": "^1.0.0",
+    "@open-wc/demoing-storybook": "^2.0.0",
+    "@open-wc/eslint-config": "^2.0.0",
+    "@open-wc/testing": "^2.0.0",
+    "@open-wc/testing-karma": "^3.0.0",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/github": "^7.0.5",
+    "@semantic-release/gitlab": "^6.0.4",
+    "@semantic-release/gitlab-config": "^8.0.0",
+    "@semantic-release/npm": "^7.0.5",
+    "@semantic-release/release-notes-generator": "^9.0.1",
+    "@types/moment": "^2.13.0",
+    "@types/node": "13.11.1",
+    "@types/react": "^16.9.41",
+    "@typescript-eslint/eslint-plugin": "^2.20.0",
+    "@typescript-eslint/parser": "^2.20.0",
+    "concurrently": "^5.1.0",
+    "deepmerge": "^3.2.0",
+    "es-dev-server": "^1.23.0",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "husky": "^1.0.0",
+    "karma-coverage": "^2.0.2",
+    "karma-junit-reporter": "^2.0.1",
+    "koa-compose": "^4.1.0",
+    "koa-json": "^2.0.2",
+    "koa-jsonapi": "^0.0.0",
+    "koa-proxies": "^0.11.0",
+    "lint-staged": "^10.0.0",
+    "prettier": "^2.0.4",
+    "tslib": "^1.11.0",
+    "typescript": "~3.9.0",
+    "web-component-analyzer": "^1.0.3"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@open-wc/eslint-config",
+      "eslint-config-prettier"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "license": "MIT",
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  },
   "main": "index.js",
   "module": "index.js",
+  "name": "plutonium-datatable",
+  "prettier": {
+    "singleQuote": true,
+    "arrowParens": "avoid"
+  },
   "scripts": {
     "start": "concurrently --kill-others --names tsc,es-dev-server \"npm run tsc:watch\" \"es-dev-server --app-index demo/index.html --node-resolve --open --watch\"",
     "tsc:watch": "tsc --watch",
@@ -18,51 +85,13 @@
     "test": "tsc && karma start --coverage",
     "test:watch": "concurrently --kill-others --names tsc,karma \"npm run tsc:watch\" \"karma start --auto-watch=true --single-run=false\"",
     "storybook": "concurrently --kill-others --names tsc,storybook \"npm run tsc:watch\" \"start-storybook --node-resolve --watch --open\"",
-    "storybook:build": "build-storybook"
+    "storybook:build": "build-storybook",
+    "analyze:elements": "wca analyze src --format json --outFile custom-elements.json",
+    "analyze:docs": "wca analyze src --format markdown --outFile README.md"
   },
-  "dependencies": {
-    "lit-html": "^1.1.2",
-    "lit-element": "^2.2.1"
-  },
-  "devDependencies": {
-    "@types/node": "13.11.1",
-    "es-dev-server": "^1.23.0",
-    "typescript": "~3.9.0",
-    "concurrently": "^5.1.0",
-    "tslib": "^1.11.0",
-    "eslint": "^6.1.0",
-    "@open-wc/eslint-config": "^2.0.0",
-    "@typescript-eslint/eslint-plugin": "^2.20.0",
-    "@typescript-eslint/parser": "^2.20.0",
-    "prettier": "^2.0.4",
-    "eslint-config-prettier": "^6.11.0",
-    "husky": "^1.0.0",
-    "lint-staged": "^10.0.0",
-    "@open-wc/testing-karma": "^3.0.0",
-    "deepmerge": "^3.2.0",
-    "@open-wc/testing": "^2.0.0",
-    "@open-wc/demoing-storybook": "^2.0.0"
-  },
-  "eslintConfig": {
-    "extends": [
-      "@open-wc/eslint-config",
-      "eslint-config-prettier"
-    ]
-  },
-  "prettier": {
-    "singleQuote": true,
-    "arrowParens": "avoid"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.ts": [
-      "eslint --fix",
-      "prettier --write",
-      "git add"
-    ]
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.com:cherubits/cherubits-community/plutonium/plutonium-datatable.git"
   }
 }

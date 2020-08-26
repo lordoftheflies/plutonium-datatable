@@ -1,15 +1,17 @@
 ```js script
 import { html } from '@open-wc/demoing-storybook';
+import { withKnobs, withWebComponentsKnobs } from '@open-wc/demoing-storybook';
 import '../dist/plutonium-datatable.js';
 
 export default {
   title: 'PlutoniumDatatable',
   component: 'plutonium-datatable',
+  decorators: [withKnobs, withWebComponentsKnobs],
   options: { selectedPanel: "storybookjs/knobs/panel" },
 };
 ```
 
-# PlutoniumDatatable
+# Plutonium Datatable
 
 A component for...
 
