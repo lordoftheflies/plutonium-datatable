@@ -1,6 +1,6 @@
 import { html, fixture, expect } from '@open-wc/testing';
 
-import {PlutoniumDatatable} from '../src/PlutoniumDatatable.js';
+import { PlutoniumDatatable } from '../src/PlutoniumDatatable.js';
 import '../plutonium-datatable.js';
 
 describe('PlutoniumDatatable', () => {
